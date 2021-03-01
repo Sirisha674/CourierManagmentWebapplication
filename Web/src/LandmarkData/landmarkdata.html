@@ -1,0 +1,70 @@
+
+<style>
+  .content {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+  }
+  table {
+    width: 70%;
+  }
+
+  .mat-paginator, .mat-form-field {
+    display: flex;
+    justify-content: center;
+  }
+
+  th, td {
+    overflow: hidden;
+    width: auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+</style>
+<div class="content">
+  <a target="_blank" href="/landmark"><button> ADD NEW LANDMARK </button></a>
+  <div class="mat-elevation-z8">
+    <mat-form-field>
+      <label>Filter</label>
+      <input style="border-bottom:1px solid black;" matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" align="center">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let element" matTooltip="sss"> {{element.address }} </td>
+      </ng-container>
+
+      <!-- Point Order  Column -->
+      <ng-container matColumnDef="pointOrder">
+        <th mat-header-cell *matHeaderCellDef> Point Order </th>
+        <td mat-cell *matCellDef="let element" matTooltip="sss"> {{element.pointOrder }} </td>
+      </ng-container>
+
+      <!-- Distance Column -->
+      <ng-container matColumnDef="distance">
+        <th mat-header-cell *matHeaderCellDef> Distance </th>
+        <td mat-cell *matCellDef="let element"> {{element.distance}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

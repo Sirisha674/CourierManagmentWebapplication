@@ -1,0 +1,107 @@
+
+<style>
+  .content {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+  }
+</style>
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h1 class="page-title">Create</h1>
+        <form [formGroup]="createForm" (ngSubmit)="create()">
+          <div class="form-group">
+            <label for="name">Landmark Name</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="name">
+          </div>
+          <div *ngIf="isValidInput('name')"
+               class="alert alert-danger">
+            <div *ngIf="createForm.controls['name'].errors.required">
+              Landmark name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="address">
+          </div>
+          <div *ngIf="isValidInput('address')"
+               class="alert alert-danger">
+            <div *ngIf="createForm.controls['address'].errors.required">
+              Address required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="latitude">Latitude</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="latitude">
+          </div>
+          <div *ngIf="isValidInput('latitude')"
+               class="alert alert-danger">
+            <div *ngIf="createForm.controls['latitude'].errors.required">
+              Latitude is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="longitude">Longitude</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="longitude">
+          </div>
+          <div *ngIf="isValidInput('longitude')"
+               class="alert alert-danger">
+            <div *ngIf="createForm.controls['longitude'].errors.required">
+              Longitude is required.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phonenumber">Phone number</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="phonenumber">
+          </div>
+          <div *ngIf="isValidInput('phonenumber')"
+               class="alert alert-danger">
+            <div *ngIf="createForm.controls['phonenumber'].errors.required">Mobile Number is required.</div>
+            <div *ngIf="createForm.controls['phonenumber'].errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+          </div>
+
+          <button [disabled]="!createForm.valid"
+                  type="submit"
+                  class="btn btn-warning">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!--  <h1>Angular Google Map with Search Box Example - ItSolutionStuff.com</h1>
+
+  <div class="form-group">
+    <label>Enter address</label>
+    <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+  </div>
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"></agm-marker>
+  </agm-map>
+
+  <h5>Address: {{address}}</h5>
+  <div>Latitude: {{latitude}}</div>
+  <div>Longitude: {{longitude}}</div>-->
+
+
+</div>
+
+
+<router-outlet></router-outlet>
