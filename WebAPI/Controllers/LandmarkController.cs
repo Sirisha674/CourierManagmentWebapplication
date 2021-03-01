@@ -8,6 +8,7 @@ namespace WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [EnableCors("CorsPolicy")]
     public class LandmarkController : ControllerBase
     {
 
@@ -22,7 +23,6 @@ namespace WebAPI.Controllers
         /// Gets the landmarks.
         /// </summary>
         [HttpGet()]
-        [EnableCors("AllowOrigin")]
         public async Task<IActionResult> Get()
         {
             var reponse = await _courierService.GetLandmarks();
@@ -34,7 +34,6 @@ namespace WebAPI.Controllers
         /// Add the landmark data
         /// </summary>
         [HttpPost()]
-        [EnableCors("AllowOrigin")]
         public async Task<IActionResult> AddLandmark([FromBody] LandmarkEntity landmarkEntity)
         {
             var reponse = await _courierService.AddLandmark(landmarkEntity);

@@ -17,6 +17,7 @@ export class LandmarkComponent {
   zoom: number;
   address: string;
   private geoCoder;
+  message: string;
   private headers: Headers = new Headers({});
 
   @ViewChild('search')
@@ -52,7 +53,6 @@ export class LandmarkComponent {
   }
 
   create(): any {
-    console.log(this.createForm.value);
     var requestBody = {
       "name": this.createForm.value.name,
       "address": this.createForm.value.address,
@@ -67,7 +67,8 @@ export class LandmarkComponent {
     }
 
     this.http.post('https://localhost:44304/Landmark', requestBody).subscribe(data => {
-      console.log(data);
+      this.message = data["message"];
+
     })
   }
 
